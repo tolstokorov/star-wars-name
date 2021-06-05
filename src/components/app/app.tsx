@@ -91,7 +91,12 @@ const App = ({
 
     useEffect(() => {
         if(isInit) {
-            if(inputValue === '') name(emptyStr);
+            setIsNameLoading(true);
+            
+            if(inputValue === '') {
+                setIsNameLoading(false);
+                name(emptyStr);
+            }
             else getOnePeopleName(inputValue)
                             .then(() => {
                                 setIsNameLoading(false);
