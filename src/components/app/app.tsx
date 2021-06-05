@@ -58,9 +58,12 @@ const App = ({
     const [inputValue, setInputValue] = useState<InputValue>(startInputValue);
     const [isNameLoading, setIsNameLoading] = useState(true);
     const [isPeopleCountLoading, setIsPeopleCountLoading] = useState(true);
+    const [wrong, setWrong] = useState<string | null>(null);
 
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const str = e.currentTarget.value;
+        
+        setWrong(null);
 
         if(str === '') {
             setInputValue(str);
@@ -68,7 +71,9 @@ const App = ({
             return;
         }
 
-        if(+str > 0 && peopleCount && +str <= peopleCount) setInputValue(+str);
+        if(+str !== 17 && +str > 0 && peopleCount && +str <= peopleCount)
+            setInputValue(+str);
+        else setWrong(str);
     };
 
     
@@ -105,12 +110,17 @@ const App = ({
                     <label>
                         Хотите получить имя персонажа?<br />
                         Введите его ID<br />
-                        <input type="number"
+                        <br />
+                        <small>Поддерживаемые ID: от 1 до { peopleCount } </small><br />
+                        <small>(и не включая 17) </small><br />
+                        <br />
+                        <input type="text"
                         min={ peopleCount ? 1 : 0 }
                         max={ peopleCount || 1 }
                         value={ inputValue || '' }
                         onChange={ onInput }/>
-                    </label>
+                    </label><br />
+                    <small>{ wrong && `${wrong} - wrong!` }</small>
                 </>
             }
         </div>
