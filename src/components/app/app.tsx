@@ -5,8 +5,8 @@ import { RootState } from "../../store";
 import init, { Init } from "../../store/actions/is-init";
 import name, { Name } from "../../store/actions/name";
 import { StateCount, StateEmptyStr, StateName } from "../../store/reducers/people";
-import getOnePeopleName, { GetOnePeopleName, GetOnePeopleNameThunk } from "../../store/thunk/get-one-people-name";
-import getPeopleCount, { GetPeopleCount, GetPeopleCountThunk } from "../../store/thunk/get-people-count";
+import getOnePeopleName, { GetOnePeopleName, GetOnePeopleNameThunk } from "../../store/thunks/get-one-people-name";
+import getPeopleCount, { GetPeopleCount, GetPeopleCountThunk } from "../../store/thunks/get-people-count";
 
 
 
